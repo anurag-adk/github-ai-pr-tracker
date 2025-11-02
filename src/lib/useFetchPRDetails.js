@@ -30,11 +30,15 @@ export const useFetchPRDetails = (
 
       try {
         while (hasMore) {
+          // Set end date to end of day (23:59:59.999) instead of start of day (00:00:00.000) this ensures that pr created on the end date is also included
+          const endDate = new Date(dateRange.to);
+          endDate.setHours(23, 59, 59, 999);
+
           const { data } = await fetchPRs({
             variables: {
               searchQuery: `is:pr author:${username} created:${new Date(
                 dateRange.from
-              ).toISOString()}..${new Date(dateRange.to).toISOString()}`,
+              ).toISOString()}..${endDate.toISOString()}`,
               afterCursor: cursor,
             },
           });
@@ -50,7 +54,7 @@ export const useFetchPRDetails = (
         console.error("Error fetching PR details:", err);
       } finally {
         setShouldFetch(false);
-        setLoadingState("completed"); 
+        setLoadingState("completed");
       }
     };
 
