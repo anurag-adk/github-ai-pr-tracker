@@ -14,8 +14,8 @@ const DataContext = createContext(undefined);
 export const DataProvider = ({ children }) => {
   const [selectedEvent, setSelectedEvent] = useState("");
   const [dateRange, setDateRange] = useState({
-    from: new Date("2024-10-01"),
-    to: new Date("2024-10-31"),
+    from: new Date("2025-10-01"),
+    to: new Date("2025-10-31"),
   });
   const [userName, setUserName] = useState("");
   const [shouldFetch, setShouldFetch] = useState(false);
@@ -151,7 +151,7 @@ export const DataProvider = ({ children }) => {
   useCopilotAction({
     name: "fetchData",
     description:
-      "Fetch the Pull Request details with the given data. Set the default date range as October 1 - October 31, 2024 if it's not specified.",
+      "Fetch the Pull Request details with the given data. Set the default date range as October 1 - October 31, 2025 if it's not specified.",
     parameters: [
       {
         name: "event",
