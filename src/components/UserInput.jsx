@@ -102,7 +102,7 @@ export function UserInput() {
 
   useEffect(() => {
     if (selectedEvent === "hacktoberfest" && shared != "true") {
-      setDateRange({ from: new Date(2024, 9, 1), to: new Date(2024, 9, 31) });
+      setDateRange({ from: new Date(2025, 9, 1), to: new Date(2025, 9, 31) });
     } else if (
       selectedEvent === "devfest" ||
       (selectedEvent === "taipy" && shared != "true")
